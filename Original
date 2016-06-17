@@ -1,0 +1,56 @@
+import java.io.*;
+import java.lang.*;
+class studentinfo
+{
+	public String name = " ";
+	public int roll;
+	public int age,grade;
+}
+class test2
+{
+	public static void main(String[] args)throws IOException
+	{
+		FileWriter fr = new FileWriter("temp2.txt");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int i,n;
+		System.out.println("Enter the number of students : ");
+		n = Integer.parseInt(br.readLine());
+		studentinfo student[] = new studentinfo[n];
+	
+		try
+		{
+				for(i=0;i<n;i++)
+		{
+			student[i] = new studentinfo();
+			System.out.println("Enter the name of the student : ");
+			student[i].name = br.readLine();
+			System.out.println("Enter the roll number of the student : ");
+			student[i].roll = Integer.parseInt(br.readLine());
+			System.out.println("Enter the age of the student : ");
+			student[i].age = Integer.parseInt(br.readLine());
+			System.out.println("Enter the grade of the student : ");
+			student[i].grade = Integer.parseInt(br.readLine());
+		}
+			BufferedWriter br1 = new BufferedWriter(fr);
+			for(i=0;i<n;i++)
+			{
+				br1.write("Name : " + student[i].name);
+				br1.newLine();
+				br1.write("Roll Number : " + student[i].roll);
+				br1.newLine();
+				br1.write("Age : " + student[i].age);
+				br1.newLine();
+				br1.write("Grade : " + student[i].grade);
+				br1.newLine();
+				br1.newLine();
+			}
+			br1.close();
+		}
+		catch(FileNotFoundException ex)
+		{
+		}
+		catch(NullPointerException ex1)
+		{
+		}
+	}
+}
